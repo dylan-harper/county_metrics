@@ -45,6 +45,17 @@ for key in counties:
     db.session.add(county)
     db.session.commit()
 
+#takes arguments from user to calculate specified statistic
+def calculate(action, indexes):
+    if action == "mean":
+        return statistics.mean(indexes)
+    elif action == "median":
+        return statistics.median(indexes)
+    elif action == "stdev":
+        return statistics.stdev(indexes)
+    else:
+        return max(indexes) - min(indexes)
+
 #get a county by id
 @app.route('/api/v1/county/<zip>', methods=['GET'])
 def show(zip):
