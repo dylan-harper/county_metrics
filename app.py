@@ -29,3 +29,18 @@ class (County(db.Model)):
 class CountySchema(ma.Schema):
     class Meta:
         fields = ('zip', 'h_index')
+
+#import JSON Data
+json_data = './happiness-index-seed-data.json'
+with open(json_data) as file:
+     counties = json.load(file)
+
+#convert json key/values into instances of County and persist to db
+for key in counties:
+    count = County.query.filter_by(zip=key).count()
+    if count > 0:
+        break
+
+    county = County(zip = key, h_index = counties[key])
+    db.session.add(county)
+    db.session.commit()
