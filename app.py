@@ -56,6 +56,28 @@ def calculate(action, indexes):
     else:
         return max(indexes) - min(indexes)
 
+#filters parameters and user entries
+@app.route('/api/v1/county/happiness_stats/<action>', methods=['GET'])
+def happiness_stats(action):
+    stats = ["mean", "median", "stdev", "range"]
+    if action not in stats:
+        return jsonify({ "error": "Invalid statistic, choose one: [mean, median, stdev, range]"})
+
+    args = request.args
+    if len(args) < 2:
+        return jsonify({ "error": "Must include more than one county" })
+
+    indexes = []
+    for arg in request.args:
+        county = County.query.filter(County.zip == arg).first()
+        if not county:
+            return jsonify({ "error": arg + " is not included in the dataset"})
+
+        indexes.append(county.h_index)
+
+    result = calculate(action, indexes)
+    return jsonify({ action: result })
+
 #get a county by id
 @app.route('/api/v1/county/<zip>', methods=['GET'])
 def show(zip):
