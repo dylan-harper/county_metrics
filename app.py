@@ -55,9 +55,11 @@ def calculate(action, indexes):
     elif action == "median":
         return statistics.median(indexes)
     elif action == "stdev":
-        return statistics.stdev(indexes)
+        stdev = statistics.stdev(indexes)
+        return round(stdev, 2)
     else:
-        return max(indexes) - min(indexes)
+        range = max(indexes) - min(indexes)
+        return round(range, 2)
 
 #filters parameters and user entries
 @app.route('/api/v1/county/happiness_stats/<action>', methods=['GET'])
