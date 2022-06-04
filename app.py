@@ -14,3 +14,18 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_directo
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
+
+#County model
+class (County(db.Model)):
+    id = db.Column(db.Integer, primary_key=True)
+    zip = db.Column(db.String, unique=True, nullable=False)
+    h_index = db.Column(db.Float, nullable=False)
+
+    def __init__(self, zip, h_index):
+        self.zip = zip
+        self.h_index = h_index
+
+#County Schema (excludes id from responses)
+class CountySchema(ma.Schema):
+    class Meta:
+        fields = ('zip', 'h_index')
