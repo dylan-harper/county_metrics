@@ -44,3 +44,7 @@ for key in counties:
     county = County(zip = key, h_index = counties[key])
     db.session.add(county)
     db.session.commit()
+
+#run server on http://127.0.0.1:5000
+if __name__ == '__main__':
+    app.run(debug=True)
