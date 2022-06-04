@@ -16,7 +16,7 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 #County model
-class (County(db.Model)):
+class County(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     zip = db.Column(db.String, unique=True, nullable=False)
     h_index = db.Column(db.Float, nullable=False)
@@ -29,6 +29,9 @@ class (County(db.Model)):
 class CountySchema(ma.Schema):
     class Meta:
         fields = ('zip', 'h_index')
+
+#create tables in db
+db.create_all()
 
 #import JSON Data
 json_data = './happiness-index-seed-data.json'
@@ -86,6 +89,12 @@ def show(zip):
         return jsonify({ "error": zip + " is not included in the dataset"})
 
     return CountySchema().jsonify(county)
+
+#test route to get number of counties, ensure there are no doubles
+@app.route('/api/v1/county', methods=['GET'])
+def index():
+    count = len(County.query.all())
+    return jsonify({ "Number of stored counties": count })
 
 #run server on http://127.0.0.1:5000
 if __name__ == '__main__':
