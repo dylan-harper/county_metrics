@@ -6,4 +6,4 @@
 2. Create a virtual environment on command line: `virtualenv venv`
 3. Activate in CL with `source venv/bin/activate`
 4. Run `pip3 install -r requirements.txt`
-5. 
+5. Run `export FLASK_APP=app` and `export FLASK_ENV=development`
