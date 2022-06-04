@@ -8,3 +8,8 @@
 4. Run `pip3 install -r requirements.txt`
 5. Run `export FLASK_APP=app` and `export FLASK_ENV=development`
 6. You may need to install Flask-SQLAlchemy, Marshmallow, and some other dependencies independently
+
+---
+
+### Testing
+The testing suite runs on unittest, to see them in action run `python3 -m unittest test.py` in the root directory.
