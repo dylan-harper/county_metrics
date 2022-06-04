@@ -45,6 +45,15 @@ for key in counties:
     db.session.add(county)
     db.session.commit()
 
+#get a county by id
+@app.route('/api/v1/county/<zip>', methods=['GET'])
+def show(zip):
+    county = County.query.filter(County.zip == zip).first()
+    if not county:
+        return jsonify({ "error": zip + " is not included in the dataset"})
+
+    return CountySchema().jsonify(county)
+
 #run server on http://127.0.0.1:5000
 if __name__ == '__main__':
     app.run(debug=True)
