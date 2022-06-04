@@ -7,3 +7,4 @@
 3. Activate in CL with `source venv/bin/activate`
 4. Run `pip3 install -r requirements.txt`
 5. Run `export FLASK_APP=app` and `export FLASK_ENV=development`
+6. You may need to install Flask-SQLAlchemy, Marshmallow, and some other dependencies independently
