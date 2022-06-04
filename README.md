@@ -1,6 +1,9 @@
 # County Stats
 
-## Setup
-1. Create a virtual environment: `virtualenv venv`
-2. Depending on your pip version run `pip install -r requirements.txt` or `pip3 install -r requirements.txt`
-3. 
+### Setup (requires python3 and pip3)
+
+1. Fork/clone or clone down this repo
+2. Create a virtual environment on command line: `virtualenv venv`
+3. Activate in CL with `source venv/bin/activate`
+4. Run `pip3 install -r requirements.txt`
+5. 
