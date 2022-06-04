@@ -27,20 +27,20 @@ class TestAPI(unittest.TestCase):
 
     def test_counties_median_statistic(self):
         """Test to return median index for given counties"""
-        response = requests.get(self.URL + "/happiness_stats/median?1001&10003&10005")
+        response = requests.get(self.URL + "/happiness_stats/median?10001&10003&10005")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), { "median": 100.6 })
 
 
     def test_counties_stdev_statistic(self):
-        """Test to return (sample) standard deviation index for given counties"""
+        """Test to return (sample) standard deviation for given counties' indexes"""
         response = requests.get(self.URL + "/happiness_stats/stdev?10001&10003&10005")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), { "stdev": 2.35 })
 
 
     def test_counties_range_statistic(self):
-        """Test to return range index for given counties"""
+        """Test to return range for given counties indexes"""
         response = requests.get(self.URL + "/happiness_stats/range?10001&10003&10005")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), { "range": 4.3 })
