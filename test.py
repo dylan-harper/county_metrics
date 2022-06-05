@@ -1,11 +1,10 @@
-import app
 import unittest
 import requests
 
 class TestAPI(unittest.TestCase):
     URL = "http://127.0.0.1:5000/api/v1/county"
 
-    #happy path testing
+#happy path testing
     def test_all_counties(self):
         """Test to return count of all counties in db"""
         response = requests.get(self.URL)
@@ -18,13 +17,11 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), { "h_index": 96.8, "zip": "10001" })
 
-
     def test_counties_mean_statistic(self):
         """Test to return mean index for given counties"""
         response = requests.get(self.URL + "/happiness_stats/mean?10001&10003&10005")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), { "mean": 99.5 })
-
 
     def test_counties_median_statistic(self):
         """Test to return median index for given counties"""
@@ -32,13 +29,11 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), { "median": 100.6 })
 
-
     def test_counties_stdev_statistic(self):
         """Test to return (sample) standard deviation for given counties' indexes"""
         response = requests.get(self.URL + "/happiness_stats/stdev?10001&10003&10005")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), { "stdev": 2.35 })
-
 
     def test_counties_range_statistic(self):
         """Test to return range for given counties indexes"""
@@ -46,7 +41,7 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), { "range": 4.3 })
 
-    #sad path testing
+#sad path testing
     def test_for_entry_not_in_db(self):
         """Test to ensure error handling for incorrect counties"""
         response = requests.get(self.URL + "/87953")
