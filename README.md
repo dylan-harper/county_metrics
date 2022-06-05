@@ -13,3 +13,13 @@
 
 ### Testing
 The testing suite runs on unittest, to see them in action run `python3 -m unittest test.py` in the root directory.
+
+---
+
+### Available Endpoints
+
+---
+
+### Accessing the DB
+
+---
