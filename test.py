@@ -1,4 +1,3 @@
-import app
 import unittest
 import requests
 
