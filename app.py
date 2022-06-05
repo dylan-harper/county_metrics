@@ -66,17 +66,17 @@ def calculate(action, indexes):
 def happiness_stats(action):
     stats = ["mean", "median", "stdev", "range"]
     if action not in stats:
-        return jsonify({ "error": "Invalid statistic, choose one: [mean, median, stdev, range]"})
+        return jsonify({ "error": "Invalid statistic, choose one: [mean, median, stdev, range]"}), 400
 
     args = request.args
     if len(args) < 2:
-        return jsonify({ "error": "Must include more than one county" })
+        return jsonify({ "error": "Must include more than one county" }), 400
 
     indexes = []
     for arg in request.args:
         county = County.query.filter(County.zip == arg).first()
         if not county:
-            return jsonify({ "error": arg + " is not included in the dataset"})
+            return jsonify({ "error": arg + " is not included in the dataset"}), 400
 
         indexes.append(county.h_index)
 
@@ -88,7 +88,7 @@ def happiness_stats(action):
 def show(zip):
     county = County.query.filter(County.zip == zip).first()
     if not county:
-        return jsonify({ "error": zip + " is not included in the dataset"})
+        return jsonify({ "error": zip + " is not included in the dataset"}), 400
 
     return CountySchema().jsonify(county)
 
