@@ -89,6 +89,6 @@ The testing suite runs on unittest, to see them in action run `python3 -m unitte
 ---
 
 ### Containers
-See `Dockerfile` and `docker-compose.yml` for an attempt at creating containers. I found this would build an image/container, but had less luck on the actual functionality. As far as adding more information to the DB, a user would just need to add data to the preexisting JSON file.
+See `Dockerfile` and `docker-compose.yml` for an attempt at creating containers. Run `docker compose up` to use. I found this would build an image/container, but had less luck on the actual functionality. As far as adding more information to the DB, a user would just need to add data to the preexisting JSON file.
 
 ---
