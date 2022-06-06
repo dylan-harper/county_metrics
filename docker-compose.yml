@@ -1,9 +1,8 @@
-version: "3.8"
+version: "3.9"
 services:
-  app:
+  web:
     build: .
-    command: python app.py
     ports:
-      - "8000:8000"
-    volumes:
-      - .:/python-flask
+      - "8000:5000"
+  redis:
+    image: "redis:alpine"
