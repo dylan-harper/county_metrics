@@ -8,7 +8,7 @@
 4. Run `pip3 install -r requirements.txt`
 5. Run `export FLASK_APP=app` and `export FLASK_ENV=development`
 6. You may need to install Flask-SQLAlchemy, Marshmallow, and some other dependencies independently
-7. To use the app, run `python3 app.py` in CL and query with curl or Postman requests. See the tests or the below docs for templates of good/bad requests.
+7. To use the app, run `python3 app.py` in CL and query with curl or Postman requests. See the tests and the below docs for templates of good/bad requests.
 
 ---
 
