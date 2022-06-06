@@ -12,7 +12,7 @@
 ---
 
 ### Testing
-The testing suite runs on unittest, to see them in action run `python3 -m unittest test.py` in the root directory.
+The testing suite runs on unittest, to see them in action run `python3 -m unittest test.py` in the root directory. Tests cover happy/sad paths, showing what a successful request looks like and what an unsuccessful request might look like.
 
 ---
 
