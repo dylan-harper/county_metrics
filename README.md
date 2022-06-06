@@ -18,8 +18,10 @@ The testing suite runs on unittest, to see them in action run `python3 -m unitte
 
 ### Available Endpoints
 
+
 ---
 
-### Accessing the DB
+### Containers
+See `Dockerfile` and `docker-compose.yml` for an attempt at creating containers. I found this would build an image/container, but had less luck on the actual functionality. 
 
 ---
